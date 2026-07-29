@@ -1,0 +1,29 @@
+name: Publish to crates.io
+
+# Trusted Publishing (OIDC): no long-lived tokens. Configure the GitHub repo
+# as a trusted publisher for each crate on crates.io first.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  id-token: write   # required for OIDC token exchange
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: crates-io
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Pre-publish gates
+        run: |
+          cargo test --workspace
+          cargo clippy --workspace --all-targets -- -D warnings
+      - uses: rust-lang/crates-io-auth-action@v1
+        id: auth
+      - name: Publish workspace (dependency order handled by cargo)
+        run: cargo publish --workspace --no-verify
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}

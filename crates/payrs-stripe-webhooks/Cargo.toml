@@ -1,0 +1,28 @@
+[package]
+name = "payrs-stripe-webhooks"
+description = "Stripe webhook signature verification, typed events (snapshot v1 + thin v2), and an async event router"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+authors.workspace = true
+readme = "README.md"
+
+[dependencies]
+payrs-stripe-types = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+smol_str = { workspace = true }
+thiserror = { workspace = true }
+hmac = "0.12"
+sha2 = "0.10"
+futures-util = { workspace = true, features = ["alloc"] }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["macros", "rt-multi-thread", "sync"] }
+
+[lints]
+workspace = true

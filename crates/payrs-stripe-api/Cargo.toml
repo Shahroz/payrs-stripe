@@ -1,0 +1,22 @@
+[package]
+name = "payrs-stripe-api"
+description = "Full-surface generated Stripe API bindings for payrs-stripe: every v1 model and operation, plus v2 core endpoints"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+authors.workspace = true
+readme = "README.md"
+
+[dependencies]
+payrs-stripe-types = { workspace = true }
+payrs-stripe-client = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_qs = { workspace = true }
+
+[lints]
+workspace = true

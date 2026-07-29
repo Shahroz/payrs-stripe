@@ -1,0 +1,21 @@
+[package]
+name = "payrs-stripe-types"
+description = "Shared primitive types for the payrs-stripe Stripe SDK (IDs, Currency, Expandable, List, Timestamp)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+authors.workspace = true
+readme = "README.md"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+smol_str = { workspace = true }
+thiserror = { workspace = true }
+
+[lints]
+workspace = true

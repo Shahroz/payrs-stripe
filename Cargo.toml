@@ -1,0 +1,67 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/payrs-stripe",
+    "crates/payrs-stripe-types",
+    "crates/payrs-stripe-client",
+    "crates/payrs-stripe-webhooks",
+    "crates/payrs-stripe-api",
+    "xtask",
+]
+default-members = [
+    "crates/payrs-stripe",
+    "crates/payrs-stripe-types",
+    "crates/payrs-stripe-client",
+    "crates/payrs-stripe-webhooks",
+    "crates/payrs-stripe-api",
+]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2021"
+rust-version = "1.89"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Shahroz/payrs-stripe"
+homepage = "https://github.com/Shahroz/payrs-stripe"
+keywords = ["stripe", "payments", "api", "billing", "webhooks"]
+categories = ["api-bindings", "web-programming"]
+authors = ["Shahroz"]
+
+[workspace.dependencies]
+# Internal crates (version-locked, released in lockstep)
+payrs-stripe-types = { version = "0.0.1", path = "crates/payrs-stripe-types" }
+payrs-stripe-client = { version = "0.0.1", path = "crates/payrs-stripe-client" }
+payrs-stripe-webhooks = { version = "0.0.1", path = "crates/payrs-stripe-webhooks" }
+payrs-stripe-api = { version = "0.0.1", path = "crates/payrs-stripe-api" }
+
+# External
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["raw_value"] }
+serde_path_to_error = "0.1"
+serde_qs = "0.13"
+smol_str = { version = "0.3", features = ["serde"] }
+thiserror = "2"
+uuid = { version = "1", features = ["v4"] }
+fastrand = "2"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls"] }
+tokio = { version = "1", default-features = false }
+futures-util = { version = "0.3", default-features = false }
+
+[workspace.lints.rust]
+missing_docs = "deny"
+unsafe_code = "forbid"
+missing_debug_implementations = "warn"
+unreachable_pub = "warn"
+
+[workspace.lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+todo = "deny"
+dbg_macro = "deny"
+missing_errors_doc = "warn"
+pedantic = { level = "warn", priority = -1 }
+# pedantic opt-outs that fight ergonomics more than they help
+module_name_repetitions = "allow"
+must_use_candidate = "allow"
+missing_panics_doc = "allow"

@@ -1,0 +1,10 @@
+# Release automation: version bumps + changelog from conventional commits,
+# release PRs, and publishing in dependency order.
+[workspace]
+changelog_update = true
+git_release_enable = true
+semver_check = true
+
+[[package]]
+name = "xtask"
+release = false
