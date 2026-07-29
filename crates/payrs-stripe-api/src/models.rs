@@ -8,7 +8,12 @@
 //! are ignored, and expandable/polymorphic fields are
 //! `serde_json::Value` in this codegen generation (typed `Expandable`
 //! lands with the Tier-1 hand-polished modules).
-#![allow(missing_docs, clippy::doc_markdown, clippy::struct_excessive_bools, rustdoc::bare_urls)]
+#![allow(
+    missing_docs,
+    clippy::doc_markdown,
+    clippy::struct_excessive_bools,
+    rustdoc::bare_urls
+)]
 
 use serde::{Deserialize, Serialize};
 
@@ -1331,7 +1336,8 @@ pub struct BankConnectionsResourceAccountNumberDetails {
 #[non_exhaustive]
 pub struct BankConnectionsResourceAccountStatusDetails {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub active: Option<Box<BankConnectionsResourceAccountStatusDetailsApiResourceActiveStatusDetails>>,
+    pub active:
+        Option<Box<BankConnectionsResourceAccountStatusDetailsApiResourceActiveStatusDetails>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -2335,8 +2341,7 @@ pub struct CardIssuingAccountTermsOfService {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct CardMandatePaymentMethodDetails {
-}
+pub struct CardMandatePaymentMethodDetails {}
 
 /// A customer's `Cash balance` represents real funds. Customers can add funds to their cash balance by sending a bank transfer. These funds can be used for payment and can eventually be paid out to your bank account.
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -3679,7 +3684,8 @@ pub struct ConfirmationToken {
 #[non_exhaustive]
 pub struct ConfirmationTokensResourceMandateData {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub customer_acceptance: Option<Box<ConfirmationTokensResourceMandateDataResourceCustomerAcceptance>>,
+    pub customer_acceptance:
+        Option<Box<ConfirmationTokensResourceMandateDataResourceCustomerAcceptance>>,
 }
 
 /// This hash contains details about the customer acceptance of the Mandate.
@@ -3723,7 +3729,8 @@ pub struct ConfirmationTokensResourcePaymentMethodOptionsResourceCard {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub cvc_token: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub installments: Option<Box<ConfirmationTokensResourcePaymentMethodOptionsResourceCardResourceInstallment>>,
+    pub installments:
+        Option<Box<ConfirmationTokensResourcePaymentMethodOptionsResourceCardResourceInstallment>>,
 }
 
 /// Installment configuration for payments.
@@ -3951,7 +3958,8 @@ pub struct ConnectEmbeddedAccountSessionCreateComponents {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub financial_account: Option<Box<ConnectEmbeddedFinancialAccountConfigClaim>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub financial_account_transactions: Option<Box<ConnectEmbeddedFinancialAccountTransactionsConfigClaim>>,
+    pub financial_account_transactions:
+        Option<Box<ConnectEmbeddedFinancialAccountTransactionsConfigClaim>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub instant_payouts_promotion: Option<Box<ConnectEmbeddedInstantPayoutsPromotionConfig>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -3992,8 +4000,7 @@ pub struct ConnectEmbeddedBaseConfigClaim {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct ConnectEmbeddedBaseFeatures {
-}
+pub struct ConnectEmbeddedBaseFeatures {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -4792,7 +4799,8 @@ pub struct CustomerBalanceResourceCashBalanceTransactionResourceFundedTransactio
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct CustomerBalanceResourceCashBalanceTransactionResourceFundedTransactionResourceBankTransferResourceEuBankTransfer {
+pub struct CustomerBalanceResourceCashBalanceTransactionResourceFundedTransactionResourceBankTransferResourceEuBankTransfer
+{
     /// The BIC of the bank of the sender of the funding.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub bic: Option<String>,
@@ -4806,7 +4814,8 @@ pub struct CustomerBalanceResourceCashBalanceTransactionResourceFundedTransactio
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct CustomerBalanceResourceCashBalanceTransactionResourceFundedTransactionResourceBankTransferResourceGbBankTransfer {
+pub struct CustomerBalanceResourceCashBalanceTransactionResourceFundedTransactionResourceBankTransferResourceGbBankTransfer
+{
     /// The last 4 digits of the account number of the sender of the funding.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub account_number_last4: Option<String>,
@@ -4820,7 +4829,8 @@ pub struct CustomerBalanceResourceCashBalanceTransactionResourceFundedTransactio
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct CustomerBalanceResourceCashBalanceTransactionResourceFundedTransactionResourceBankTransferResourceJpBankTransfer {
+pub struct CustomerBalanceResourceCashBalanceTransactionResourceFundedTransactionResourceBankTransferResourceJpBankTransfer
+{
     /// The name of the bank of the sender of the funding.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub sender_bank: Option<String>,
@@ -4834,7 +4844,8 @@ pub struct CustomerBalanceResourceCashBalanceTransactionResourceFundedTransactio
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct CustomerBalanceResourceCashBalanceTransactionResourceFundedTransactionResourceBankTransferResourceUsBankTransfer {
+pub struct CustomerBalanceResourceCashBalanceTransactionResourceFundedTransactionResourceBankTransferResourceUsBankTransfer
+{
     /// The banking network used for this funding.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub network: Option<String>,
@@ -4923,9 +4934,12 @@ pub struct CustomerBalanceTransaction {
 #[non_exhaustive]
 pub struct CustomerCashBalanceTransaction {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub adjusted_for_overdraft: Option<Box<CustomerBalanceResourceCashBalanceTransactionResourceAdjustedForOverdraft>>,
+    pub adjusted_for_overdraft:
+        Option<Box<CustomerBalanceResourceCashBalanceTransactionResourceAdjustedForOverdraft>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub applied_to_payment: Option<Box<CustomerBalanceResourceCashBalanceTransactionResourceAppliedToPaymentTransaction>>,
+    pub applied_to_payment: Option<
+        Box<CustomerBalanceResourceCashBalanceTransactionResourceAppliedToPaymentTransaction>,
+    >,
     /// Time at which the object was created. Measured in seconds since the Unix epoch.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub created: Option<i64>,
@@ -4956,14 +4970,19 @@ pub struct CustomerCashBalanceTransaction {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub object: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub refunded_from_payment: Option<Box<CustomerBalanceResourceCashBalanceTransactionResourceRefundedFromPaymentTransaction>>,
+    pub refunded_from_payment: Option<
+        Box<CustomerBalanceResourceCashBalanceTransactionResourceRefundedFromPaymentTransaction>,
+    >,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub transferred_to_balance: Option<Box<CustomerBalanceResourceCashBalanceTransactionResourceTransferredToBalance>>,
+    pub transferred_to_balance:
+        Option<Box<CustomerBalanceResourceCashBalanceTransactionResourceTransferredToBalance>>,
     /// The type of the cash balance transaction. New types may be added in future. See \[Customer Balance\](https://docs.stripe.com/payments/customer-balance#types) to learn more about these types.
     #[serde(default, skip_serializing_if = "Option::is_none", rename = "type")]
     pub type_: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub unapplied_from_payment: Option<Box<CustomerBalanceResourceCashBalanceTransactionResourceUnappliedFromPaymentTransaction>>,
+    pub unapplied_from_payment: Option<
+        Box<CustomerBalanceResourceCashBalanceTransactionResourceUnappliedFromPaymentTransaction>,
+    >,
 }
 
 /// A Customer Session allows you to grant Stripe's frontend SDKs (like Stripe.js) client-side access control over a Customer. Related guides: \[Customer Session with the Payment Element\](/payments/accept-a-payment-deferred?platform=web&type=payment#save-payment-methods), \[Customer Session with the Pricing Table\](/payments/checkout/pricing-table#customer-session), \[Customer Session with the Buy B…
@@ -5004,7 +5023,8 @@ pub struct CustomerSessionResourceComponents {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub customer_sheet: Option<Box<CustomerSessionResourceComponentsResourceCustomerSheet>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub mobile_payment_element: Option<Box<CustomerSessionResourceComponentsResourceMobilePaymentElement>>,
+    pub mobile_payment_element:
+        Option<Box<CustomerSessionResourceComponentsResourceMobilePaymentElement>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub payment_element: Option<Box<CustomerSessionResourceComponentsResourcePaymentElement>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -5539,8 +5559,7 @@ pub struct DeletedWebhookEndpoint {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct DestinationDetailsUnimplemented {
-}
+pub struct DestinationDetailsUnimplemented {}
 
 /// A discount represents the actual application of a \[coupon\](https://api.stripe.com#coupons) or \[promotion code\](https://api.stripe.com#promotion_codes). It contains information about when the discount began, when it will end, and what it is applied to. Related guide: \[Applying discounts to subscriptions\](https://docs.stripe.com/billing/subscriptions/discounts)
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -5741,7 +5760,8 @@ pub struct DisputeEnhancedEvidenceVisaCompellingEvidence3 {
     pub disputed_transaction: Option<serde_json::Value>,
     /// List of exactly two prior undisputed transaction objects for Visa Compelling Evidence 3.0 evidence submission.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub prior_undisputed_transactions: Option<Vec<DisputeVisaCompellingEvidence3PriorUndisputedTransaction>>,
+    pub prior_undisputed_transactions:
+        Option<Vec<DisputeVisaCompellingEvidence3PriorUndisputedTransaction>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -6464,7 +6484,8 @@ pub struct FinancialConnectionsTransaction {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub status_transitions: Option<Box<BankConnectionsResourceTransactionResourceStatusTransitions>>,
+    pub status_transitions:
+        Option<Box<BankConnectionsResourceTransactionResourceStatusTransitions>>,
     /// Time at which the transaction was transacted. Measured in seconds since the Unix epoch.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub transacted_at: Option<i64>,
@@ -7068,8 +7089,7 @@ pub struct GelatoReportDocumentOptions {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct GelatoReportIdNumberOptions {
-}
+pub struct GelatoReportIdNumberOptions {}
 
 /// Result from a selfie check
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -7127,8 +7147,7 @@ pub struct GelatoSessionEmailOptions {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct GelatoSessionIdNumberOptions {
-}
+pub struct GelatoSessionIdNumberOptions {}
 
 /// Shows last VerificationSession error
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -7473,7 +7492,8 @@ pub struct InsightsResourcesPaymentEvaluationEvent {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub dispute_opened: Option<Box<InsightsResourcesPaymentEvaluationDisputeOpened>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub early_fraud_warning_received: Option<Box<InsightsResourcesPaymentEvaluationEarlyFraudWarningReceived>>,
+    pub early_fraud_warning_received:
+        Option<Box<InsightsResourcesPaymentEvaluationEarlyFraudWarningReceived>>,
     /// Timestamp when the event occurred.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub occurred_at: Option<i64>,
@@ -7483,9 +7503,11 @@ pub struct InsightsResourcesPaymentEvaluationEvent {
     #[serde(default, skip_serializing_if = "Option::is_none", rename = "type")]
     pub type_: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub user_intervention_raised: Option<Box<InsightsResourcesPaymentEvaluationUserInterventionRaised>>,
+    pub user_intervention_raised:
+        Option<Box<InsightsResourcesPaymentEvaluationUserInterventionRaised>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub user_intervention_resolved: Option<Box<InsightsResourcesPaymentEvaluationUserInterventionResolved>>,
+    pub user_intervention_resolved:
+        Option<Box<InsightsResourcesPaymentEvaluationUserInterventionResolved>>,
 }
 
 /// Details of a merchant_blocked outcome attached to this payment evaluation.
@@ -8130,7 +8152,8 @@ pub struct InvoicePaymentMethodOptionsCustomerBalance {
 #[non_exhaustive]
 pub struct InvoicePaymentMethodOptionsCustomerBalanceBankTransfer {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub eu_bank_transfer: Option<Box<InvoicePaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>>,
+    pub eu_bank_transfer:
+        Option<Box<InvoicePaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>>,
     /// The bank transfer type that can be used for funding. Permitted values include: `eu_bank_transfer`, `gb_bank_transfer`, `jp_bank_transfer`, `mx_bank_transfer`, or `us_bank_transfer`.
     #[serde(default, skip_serializing_if = "Option::is_none", rename = "type")]
     pub type_: Option<String>,
@@ -8146,8 +8169,7 @@ pub struct InvoicePaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer 
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct InvoicePaymentMethodOptionsKonbini {
-}
+pub struct InvoicePaymentMethodOptionsKonbini {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -8186,8 +8208,7 @@ pub struct InvoicePaymentMethodOptionsPix {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct InvoicePaymentMethodOptionsSepaDebit {
-}
+pub struct InvoicePaymentMethodOptionsSepaDebit {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -8200,7 +8221,8 @@ pub struct InvoicePaymentMethodOptionsUpi {
 #[non_exhaustive]
 pub struct InvoicePaymentMethodOptionsUsBankAccount {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub financial_connections: Option<Box<InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptions>>,
+    pub financial_connections:
+        Option<Box<InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptions>>,
     /// Bank account verification method. The default value is `automatic`.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub verification_method: Option<String>,
@@ -10732,7 +10754,9 @@ pub struct LineItemsTaxAmount {
 #[non_exhaustive]
 pub struct LinkedAccountOptionsCommon {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub filters: Option<Box<PaymentFlowsPrivatePaymentMethodsFinancialConnectionsCommonLinkedAccountOptionsFilters>>,
+    pub filters: Option<
+        Box<PaymentFlowsPrivatePaymentMethodsFinancialConnectionsCommonLinkedAccountOptionsFilters>,
+    >,
     /// The list of permissions to request. The `payment_method` permission must be included.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub permissions: Option<Vec<String>>,
@@ -10813,8 +10837,7 @@ pub struct MandateAcssDebit {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct MandateAmazonPay {
-}
+pub struct MandateAmazonPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -10849,28 +10872,23 @@ pub struct MandateBacsDebit {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct MandateCashapp {
-}
+pub struct MandateCashapp {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct MandateKakaoPay {
-}
+pub struct MandateKakaoPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct MandateKlarna {
-}
+pub struct MandateKlarna {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct MandateKrCard {
-}
+pub struct MandateKrCard {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct MandateLink {
-}
+pub struct MandateLink {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -10885,13 +10903,11 @@ pub struct MandateMultiUse {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct MandateNaverPay {
-}
+pub struct MandateNaverPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct MandateNzBankAccount {
-}
+pub struct MandateNzBankAccount {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -11046,8 +11062,7 @@ pub struct MandatePix {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct MandateRevolutPay {
-}
+pub struct MandateRevolutPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -11073,8 +11088,7 @@ pub struct MandateSingleUse {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct MandateTwint {
-}
+pub struct MandateTwint {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -11136,8 +11150,7 @@ pub struct NotificationEventRequest {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct OfflineAcceptance {
-}
+pub struct OfflineAcceptance {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -11512,8 +11525,7 @@ pub struct PaymentFlowsPaymentIntentPresentmentDetails {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentFlowsPrivatePaymentMethodsAlipay {
-}
+pub struct PaymentFlowsPrivatePaymentMethodsAlipay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -11531,7 +11543,8 @@ pub struct PaymentFlowsPrivatePaymentMethodsAlipayDetails {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentFlowsPrivatePaymentMethodsCardDetailsApiResourceEnterpriseFeaturesExtendedAuthorizationExtendedAuthorization {
+pub struct PaymentFlowsPrivatePaymentMethodsCardDetailsApiResourceEnterpriseFeaturesExtendedAuthorizationExtendedAuthorization
+{
     /// Indicates whether or not the capture window is extended beyond the standard authorization.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
@@ -11539,7 +11552,8 @@ pub struct PaymentFlowsPrivatePaymentMethodsCardDetailsApiResourceEnterpriseFeat
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentFlowsPrivatePaymentMethodsCardDetailsApiResourceEnterpriseFeaturesIncrementalAuthorizationIncrementalAuthorization {
+pub struct PaymentFlowsPrivatePaymentMethodsCardDetailsApiResourceEnterpriseFeaturesIncrementalAuthorizationIncrementalAuthorization
+{
     /// Indicates whether or not the incremental authorization feature is supported.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
@@ -11547,7 +11561,8 @@ pub struct PaymentFlowsPrivatePaymentMethodsCardDetailsApiResourceEnterpriseFeat
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentFlowsPrivatePaymentMethodsCardDetailsApiResourceEnterpriseFeaturesOvercaptureOvercapture {
+pub struct PaymentFlowsPrivatePaymentMethodsCardDetailsApiResourceEnterpriseFeaturesOvercaptureOvercapture
+{
     /// The maximum amount that can be captured.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub maximum_amount_capturable: Option<i64>,
@@ -11566,7 +11581,8 @@ pub struct PaymentFlowsPrivatePaymentMethodsCardDetailsApiResourceMulticapture {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentFlowsPrivatePaymentMethodsCardPaymentIntentAmountDetailsLineItemPaymentMethodOptions {
+pub struct PaymentFlowsPrivatePaymentMethodsCardPaymentIntentAmountDetailsLineItemPaymentMethodOptions
+{
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub commodity_code: Option<String>,
 }
@@ -11621,7 +11637,8 @@ pub struct PaymentFlowsPrivatePaymentMethodsKlarnaDob {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentFlowsPrivatePaymentMethodsKlarnaPaymentIntentAmountDetailsLineItemPaymentMethodOptions {
+pub struct PaymentFlowsPrivatePaymentMethodsKlarnaPaymentIntentAmountDetailsLineItemPaymentMethodOptions
+{
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub image_url: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -11675,8 +11692,7 @@ pub struct PaymentFlowsPrivatePaymentMethodsSamsungPayPaymentMethodOptions {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentFlowsPrivatePaymentMethodsSatispaySetupAttemptDetails {
-}
+pub struct PaymentFlowsPrivatePaymentMethodsSatispaySetupAttemptDetails {}
 
 /// A PaymentIntent guides you through the process of collecting a payment from your customer. We recommend that you create exactly one PaymentIntent for each order or customer session in your system. You can reference the PaymentIntent later to see the history of payment attempts for a particular session. A PaymentIntent transitions through \[multiple statuses\](/payments/paymentintents/lifecycle) t…
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -11866,9 +11882,11 @@ pub struct PaymentIntentNextAction {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub card_await_notification: Option<Box<PaymentIntentNextActionCardAwaitNotification>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub cashapp_handle_redirect_or_display_qr_code: Option<Box<PaymentIntentNextActionCashappHandleRedirectOrDisplayQrCode>>,
+    pub cashapp_handle_redirect_or_display_qr_code:
+        Option<Box<PaymentIntentNextActionCashappHandleRedirectOrDisplayQrCode>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub display_bank_transfer_instructions: Option<Box<PaymentIntentNextActionDisplayBankTransferInstructions>>,
+    pub display_bank_transfer_instructions:
+        Option<Box<PaymentIntentNextActionDisplayBankTransferInstructions>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub klarna_display_qr_code: Option<Box<PaymentIntentNextActionKlarnaDisplayQrCode>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -11886,12 +11904,14 @@ pub struct PaymentIntentNextAction {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub redirect_to_url: Option<Box<PaymentIntentNextActionRedirectToUrl>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub swish_handle_redirect_or_display_qr_code: Option<Box<PaymentIntentNextActionSwishHandleRedirectOrDisplayQrCode>>,
+    pub swish_handle_redirect_or_display_qr_code:
+        Option<Box<PaymentIntentNextActionSwishHandleRedirectOrDisplayQrCode>>,
     /// Type of the next action to perform. Refer to the other child attributes under `next_action` for available values. Examples include: `redirect_to_url`, `use_stripe_sdk`, `alipay_handle_redirect`, `oxxo_display_details`, or `verify_with_micr…
     #[serde(default, skip_serializing_if = "Option::is_none", rename = "type")]
     pub type_: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub upi_handle_redirect_or_display_qr_code: Option<Box<PaymentIntentNextActionUpiHandleRedirectOrDisplayQrCode>>,
+    pub upi_handle_redirect_or_display_qr_code:
+        Option<Box<PaymentIntentNextActionUpiHandleRedirectOrDisplayQrCode>>,
     /// When confirming a PaymentIntent with Stripe.js, Stripe.js depends on the contents of this dictionary to invoke authentication flows. The shape of the contents is subject to change and is only intended to be used by Stripe.js.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub use_stripe_sdk: Option<serde_json::Value>,
@@ -11900,9 +11920,11 @@ pub struct PaymentIntentNextAction {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub wechat_pay_display_qr_code: Option<Box<PaymentIntentNextActionWechatPayDisplayQrCode>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub wechat_pay_redirect_to_android_app: Option<Box<PaymentIntentNextActionWechatPayRedirectToAndroidApp>>,
+    pub wechat_pay_redirect_to_android_app:
+        Option<Box<PaymentIntentNextActionWechatPayRedirectToAndroidApp>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub wechat_pay_redirect_to_ios_app: Option<Box<PaymentIntentNextActionWechatPayRedirectToIosApp>>,
+    pub wechat_pay_redirect_to_ios_app:
+        Option<Box<PaymentIntentNextActionWechatPayRedirectToIosApp>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -11924,8 +11946,7 @@ pub struct PaymentIntentNextActionAlipayHandleRedirect {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentIntentNextActionBlikAuthorize {
-}
+pub struct PaymentIntentNextActionBlikAuthorize {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -13403,23 +13424,19 @@ pub struct PaymentMethodAcssDebit {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodAffirm {
-}
+pub struct PaymentMethodAffirm {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodAfterpayClearpay {
-}
+pub struct PaymentMethodAfterpayClearpay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodAlma {
-}
+pub struct PaymentMethodAlma {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodAmazonPay {
-}
+pub struct PaymentMethodAmazonPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -13451,13 +13468,11 @@ pub struct PaymentMethodBacsDebit {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodBancontact {
-}
+pub struct PaymentMethodBancontact {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodBillie {
-}
+pub struct PaymentMethodBillie {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -13648,23 +13663,19 @@ pub struct PaymentMethodCardWallet {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodCardWalletAmexExpressCheckout {
-}
+pub struct PaymentMethodCardWalletAmexExpressCheckout {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodCardWalletApplePay {
-}
+pub struct PaymentMethodCardWalletApplePay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodCardWalletGooglePay {
-}
+pub struct PaymentMethodCardWalletGooglePay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodCardWalletLink {
-}
+pub struct PaymentMethodCardWalletLink {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -13685,8 +13696,7 @@ pub struct PaymentMethodCardWalletMasterpass {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodCardWalletSamsungPay {
-}
+pub struct PaymentMethodCardWalletSamsungPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -13899,8 +13909,7 @@ pub struct PaymentMethodConfiguration {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodCrypto {
-}
+pub struct PaymentMethodCrypto {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -13918,8 +13927,7 @@ pub struct PaymentMethodCustom {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodCustomerBalance {
-}
+pub struct PaymentMethodCustomerBalance {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -14533,23 +14541,19 @@ pub struct PaymentMethodDetailsCardWallet {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsCardWalletAmexExpressCheckout {
-}
+pub struct PaymentMethodDetailsCardWalletAmexExpressCheckout {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsCardWalletApplePay {
-}
+pub struct PaymentMethodDetailsCardWalletApplePay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsCardWalletGooglePay {
-}
+pub struct PaymentMethodDetailsCardWalletGooglePay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsCardWalletLink {
-}
+pub struct PaymentMethodDetailsCardWalletLink {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -14570,8 +14574,7 @@ pub struct PaymentMethodDetailsCardWalletMasterpass {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsCardWalletSamsungPay {
-}
+pub struct PaymentMethodDetailsCardWalletSamsungPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -14623,8 +14626,7 @@ pub struct PaymentMethodDetailsCrypto {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsCustomerBalance {
-}
+pub struct PaymentMethodDetailsCustomerBalance {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -14867,8 +14869,7 @@ pub struct PaymentMethodDetailsLink {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsMbWay {
-}
+pub struct PaymentMethodDetailsMbWay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -14973,8 +14974,7 @@ pub struct PaymentMethodDetailsPassthroughCard {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsPayByBank {
-}
+pub struct PaymentMethodDetailsPayByBank {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -15042,7 +15042,9 @@ pub struct PaymentMethodDetailsPaymentRecordAfterpayClearpay {
 #[non_exhaustive]
 pub struct PaymentMethodDetailsPaymentRecordAlma {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub installments: Option<Box<PaymentsPrimitivesPaymentRecordsResourcePaymentMethodAlmaDetailsResourceInstallments>>,
+    pub installments: Option<
+        Box<PaymentsPrimitivesPaymentRecordsResourcePaymentMethodAlmaDetailsResourceInstallments>,
+    >,
     /// The Alma transaction ID associated with this payment.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub transaction_id: Option<String>,
@@ -15052,7 +15054,9 @@ pub struct PaymentMethodDetailsPaymentRecordAlma {
 #[non_exhaustive]
 pub struct PaymentMethodDetailsPaymentRecordAmazonPay {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub funding: Option<Box<PaymentsPrimitivesPaymentRecordsResourcePaymentMethodAmazonPayDetailsResourceFunding>>,
+    pub funding: Option<
+        Box<PaymentsPrimitivesPaymentRecordsResourcePaymentMethodAmazonPayDetailsResourceFunding>,
+    >,
     /// The Amazon Pay transaction ID associated with this payment.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub transaction_id: Option<String>,
@@ -15239,8 +15243,7 @@ pub struct PaymentMethodDetailsPaymentRecordLink {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsPaymentRecordMbWay {
-}
+pub struct PaymentMethodDetailsPaymentRecordMbWay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -15296,8 +15299,7 @@ pub struct PaymentMethodDetailsPaymentRecordP24 {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsPaymentRecordPayByBank {
-}
+pub struct PaymentMethodDetailsPaymentRecordPayByBank {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -15364,7 +15366,9 @@ pub struct PaymentMethodDetailsPaymentRecordPromptpay {
 #[non_exhaustive]
 pub struct PaymentMethodDetailsPaymentRecordRevolutPay {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub funding: Option<Box<PaymentsPrimitivesPaymentRecordsResourcePaymentMethodRevolutPayDetailsResourceFunding>>,
+    pub funding: Option<
+        Box<PaymentsPrimitivesPaymentRecordsResourcePaymentMethodRevolutPayDetailsResourceFunding>,
+    >,
     /// The Revolut Pay transaction ID associated with this payment.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub transaction_id: Option<String>,
@@ -15544,8 +15548,7 @@ pub struct PaymentMethodDetailsPaymentRecordWechatPay {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsPaymentRecordZip {
-}
+pub struct PaymentMethodDetailsPaymentRecordZip {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -15720,8 +15723,7 @@ pub struct PaymentMethodDetailsSofort {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsStripeAccount {
-}
+pub struct PaymentMethodDetailsStripeAccount {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -15795,8 +15797,7 @@ pub struct PaymentMethodDetailsUsBankAccount {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsWechat {
-}
+pub struct PaymentMethodDetailsWechat {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -15817,8 +15818,7 @@ pub struct PaymentMethodDetailsWechatPay {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodDetailsZip {
-}
+pub struct PaymentMethodDetailsZip {}
 
 /// A payment method domain represents a web domain that you have registered with Stripe. Stripe Elements use registered payment method domains to control where certain payment methods are shown. Related guide: \[Payment method domains\](https://docs.stripe.com/payments/payment-methods/pmd-registration).
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -15894,13 +15894,11 @@ pub struct PaymentMethodFpx {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodGiropay {
-}
+pub struct PaymentMethodGiropay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodGrabpay {
-}
+pub struct PaymentMethodGrabpay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -15959,8 +15957,7 @@ pub struct PaymentMethodInteracPresent {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodKakaoPay {
-}
+pub struct PaymentMethodKakaoPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -15972,8 +15969,7 @@ pub struct PaymentMethodKlarna {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodKonbini {
-}
+pub struct PaymentMethodKonbini {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -15996,18 +15992,15 @@ pub struct PaymentMethodLink {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodMbWay {
-}
+pub struct PaymentMethodMbWay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodMobilepay {
-}
+pub struct PaymentMethodMobilepay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodMultibanco {
-}
+pub struct PaymentMethodMultibanco {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -16119,8 +16112,7 @@ pub struct PaymentMethodOptionsBillie {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodOptionsBizum {
-}
+pub struct PaymentMethodOptionsBizum {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -16290,8 +16282,7 @@ pub struct PaymentMethodOptionsIdeal {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodOptionsInteracPresent {
-}
+pub struct PaymentMethodOptionsInteracPresent {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -16421,8 +16412,7 @@ pub struct PaymentMethodOptionsP24 {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodOptionsPayByBank {
-}
+pub struct PaymentMethodOptionsPayByBank {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -16576,8 +16566,7 @@ pub struct PaymentMethodOptionsZip {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodOxxo {
-}
+pub struct PaymentMethodOxxo {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -16589,18 +16578,15 @@ pub struct PaymentMethodP24 {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodPayByBank {
-}
+pub struct PaymentMethodPayByBank {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodPayco {
-}
+pub struct PaymentMethodPayco {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodPaynow {
-}
+pub struct PaymentMethodPaynow {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -16640,28 +16626,23 @@ pub struct PaymentMethodPix {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodPromptpay {
-}
+pub struct PaymentMethodPromptpay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodRevolutPay {
-}
+pub struct PaymentMethodRevolutPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodSamsungPay {
-}
+pub struct PaymentMethodSamsungPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodSatispay {
-}
+pub struct PaymentMethodSatispay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodScalapay {
-}
+pub struct PaymentMethodScalapay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -16696,18 +16677,15 @@ pub struct PaymentMethodSofort {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodSunbit {
-}
+pub struct PaymentMethodSunbit {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodSwish {
-}
+pub struct PaymentMethodSwish {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodTwint {
-}
+pub struct PaymentMethodTwint {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -16769,13 +16747,11 @@ pub struct PaymentMethodUsBankAccountStatusDetails {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodWechatPay {
-}
+pub struct PaymentMethodWechatPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentMethodZip {
-}
+pub struct PaymentMethodZip {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -17492,7 +17468,8 @@ pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodAmazonPayDetails
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodAmazonPayDetailsResourceFundingResourceFundingCard {
+pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodAmazonPayDetailsResourceFundingResourceFundingCard
+{
     /// Card brand. Can be `amex`, `cartes_bancaires`, `diners`, `discover`, `eftpos_au`, `jcb`, `link`, `mastercard`, `unionpay`, `visa` or `unknown`.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub brand: Option<String>,
@@ -17663,7 +17640,8 @@ pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCardDetailsResou
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCardDetailsResourceWalletResourceApplePay {
+pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCardDetailsResourceWalletResourceApplePay
+{
     /// Type of the apple_pay transaction, one of `apple_pay` or `apple_pay_later`.
     #[serde(default, skip_serializing_if = "Option::is_none", rename = "type")]
     pub type_: Option<String>,
@@ -17671,8 +17649,8 @@ pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCardDetailsResou
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCardDetailsResourceWalletResourceGooglePay {
-}
+pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCardDetailsResourceWalletResourceGooglePay
+{}
 
 /// Custom Payment Methods represent Payment Method types not modeled directly in the Stripe API. This resource consists of details about the custom payment method used for this payment attempt.
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -17833,7 +17811,8 @@ pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodKlarnaDetailsRes
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodKlarnaDetailsResourcePayerDetailsResourcePayerDetailsAddress {
+pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodKlarnaDetailsResourcePayerDetailsResourcePayerDetailsAddress
+{
     /// The payer address country
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub country: Option<String>,
@@ -17879,7 +17858,8 @@ pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodRevolutPayDetail
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodRevolutPayDetailsResourceFundingResourceFundingCard {
+pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodRevolutPayDetailsResourceFundingResourceFundingCard
+{
     /// Card brand. Can be `amex`, `cartes_bancaires`, `diners`, `discover`, `eftpos_au`, `jcb`, `link`, `mastercard`, `unionpay`, `visa` or `unknown`.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub brand: Option<String>,
@@ -17905,7 +17885,8 @@ pub struct PaymentsPrimitivesPaymentRecordsResourcePaymentMethodRevolutPayDetail
 #[non_exhaustive]
 pub struct PaymentsPrimitivesPaymentRecordsResourceProcessorDetails {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub custom: Option<Box<PaymentsPrimitivesPaymentRecordsResourceProcessorDetailsResourceCustomDetails>>,
+    pub custom:
+        Option<Box<PaymentsPrimitivesPaymentRecordsResourceProcessorDetailsResourceCustomDetails>>,
     /// The processor used for this payment attempt.
     #[serde(default, skip_serializing_if = "Option::is_none", rename = "type")]
     pub type_: Option<String>,
@@ -19227,7 +19208,8 @@ pub struct RadarEarlyFraudWarning {
 #[non_exhaustive]
 pub struct RadarPaymentEvaluation {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub client_device_metadata_details: Option<Box<InsightsResourcesPaymentEvaluationClientDeviceMetadata>>,
+    pub client_device_metadata_details:
+        Option<Box<InsightsResourcesPaymentEvaluationClientDeviceMetadata>>,
     /// Time at which the object was created. Measured in seconds since the Unix epoch.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub created_at: Option<i64>,
@@ -20085,23 +20067,19 @@ pub struct SetupAttemptPaymentMethodDetails {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsAcssDebit {
-}
+pub struct SetupAttemptPaymentMethodDetailsAcssDebit {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsAmazonPay {
-}
+pub struct SetupAttemptPaymentMethodDetailsAmazonPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsAuBecsDebit {
-}
+pub struct SetupAttemptPaymentMethodDetailsAuBecsDebit {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsBacsDebit {
-}
+pub struct SetupAttemptPaymentMethodDetailsBacsDebit {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -20134,8 +20112,7 @@ pub struct SetupAttemptPaymentMethodDetailsBancontact {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsBoleto {
-}
+pub struct SetupAttemptPaymentMethodDetailsBoleto {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -20214,8 +20191,7 @@ pub struct SetupAttemptPaymentMethodDetailsCardWallet {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsCashapp {
-}
+pub struct SetupAttemptPaymentMethodDetailsCashapp {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -20242,23 +20218,19 @@ pub struct SetupAttemptPaymentMethodDetailsIdeal {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsKakaoPay {
-}
+pub struct SetupAttemptPaymentMethodDetailsKakaoPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsKlarna {
-}
+pub struct SetupAttemptPaymentMethodDetailsKlarna {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsKrCard {
-}
+pub struct SetupAttemptPaymentMethodDetailsKrCard {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsLink {
-}
+pub struct SetupAttemptPaymentMethodDetailsLink {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -20270,18 +20242,15 @@ pub struct SetupAttemptPaymentMethodDetailsNaverPay {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsNzBankAccount {
-}
+pub struct SetupAttemptPaymentMethodDetailsNzBankAccount {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsPaypal {
-}
+pub struct SetupAttemptPaymentMethodDetailsPaypal {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsPayto {
-}
+pub struct SetupAttemptPaymentMethodDetailsPayto {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -20293,13 +20262,11 @@ pub struct SetupAttemptPaymentMethodDetailsPix {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsRevolutPay {
-}
+pub struct SetupAttemptPaymentMethodDetailsRevolutPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsSepaDebit {
-}
+pub struct SetupAttemptPaymentMethodDetailsSepaDebit {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -20332,18 +20299,15 @@ pub struct SetupAttemptPaymentMethodDetailsSofort {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsTwint {
-}
+pub struct SetupAttemptPaymentMethodDetailsTwint {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsUpi {
-}
+pub struct SetupAttemptPaymentMethodDetailsUpi {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupAttemptPaymentMethodDetailsUsBankAccount {
-}
+pub struct SetupAttemptPaymentMethodDetailsUsBankAccount {}
 
 /// A SetupIntent guides you through the process of setting up and saving a customer's payment credentials for future payments. For example, you can use a SetupIntent to set up and save your customer's card without immediately collecting a payment. Later, you can use \[PaymentIntents\](https://api.stripe.com#payment_intents) to drive the payment flow. Create a SetupIntent when you're ready to collect…
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -20440,7 +20404,8 @@ pub struct SetupIntentNextAction {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub blik_authorize: Option<Box<PaymentIntentNextActionBlikAuthorize>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub cashapp_handle_redirect_or_display_qr_code: Option<Box<PaymentIntentNextActionCashappHandleRedirectOrDisplayQrCode>>,
+    pub cashapp_handle_redirect_or_display_qr_code:
+        Option<Box<PaymentIntentNextActionCashappHandleRedirectOrDisplayQrCode>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub pix_display_qr_code: Option<Box<SetupIntentNextActionPixDisplayQrCode>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -20449,7 +20414,8 @@ pub struct SetupIntentNextAction {
     #[serde(default, skip_serializing_if = "Option::is_none", rename = "type")]
     pub type_: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub upi_handle_redirect_or_display_qr_code: Option<Box<PaymentIntentNextActionUpiHandleRedirectOrDisplayQrCode>>,
+    pub upi_handle_redirect_or_display_qr_code:
+        Option<Box<PaymentIntentNextActionUpiHandleRedirectOrDisplayQrCode>>,
     /// When confirming a SetupIntent with Stripe.js, Stripe.js depends on the contents of this dictionary to invoke authentication flows. The shape of the contents is subject to change and is only intended to be used by Stripe.js.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub use_stripe_sdk: Option<serde_json::Value>,
@@ -20550,8 +20516,7 @@ pub struct SetupIntentPaymentMethodOptionsAcssDebit {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupIntentPaymentMethodOptionsAmazonPay {
-}
+pub struct SetupIntentPaymentMethodOptionsAmazonPay {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -20562,8 +20527,7 @@ pub struct SetupIntentPaymentMethodOptionsBacsDebit {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupIntentPaymentMethodOptionsBizum {
-}
+pub struct SetupIntentPaymentMethodOptionsBizum {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -20616,8 +20580,7 @@ pub struct SetupIntentPaymentMethodOptionsCardMandateOptions {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupIntentPaymentMethodOptionsCardPresent {
-}
+pub struct SetupIntentPaymentMethodOptionsCardPresent {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -20632,8 +20595,7 @@ pub struct SetupIntentPaymentMethodOptionsKlarna {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct SetupIntentPaymentMethodOptionsLink {
-}
+pub struct SetupIntentPaymentMethodOptionsLink {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -23144,7 +23106,8 @@ pub struct TaxProductRegistrationsResourceCountryOptionsCaProvinceStandard {
 #[non_exhaustive]
 pub struct TaxProductRegistrationsResourceCountryOptionsCanada {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub province_standard: Option<Box<TaxProductRegistrationsResourceCountryOptionsCaProvinceStandard>>,
+    pub province_standard:
+        Option<Box<TaxProductRegistrationsResourceCountryOptionsCaProvinceStandard>>,
     /// Type of registration in Canada.
     #[serde(default, skip_serializing_if = "Option::is_none", rename = "type")]
     pub type_: Option<String>,
@@ -23214,7 +23177,8 @@ pub struct TaxProductRegistrationsResourceCountryOptionsThailand {
 #[non_exhaustive]
 pub struct TaxProductRegistrationsResourceCountryOptionsUnitedStates {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub local_amusement_tax: Option<Box<TaxProductRegistrationsResourceCountryOptionsUsLocalAmusementTax>>,
+    pub local_amusement_tax:
+        Option<Box<TaxProductRegistrationsResourceCountryOptionsUsLocalAmusementTax>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub local_lease_tax: Option<Box<TaxProductRegistrationsResourceCountryOptionsUsLocalLeaseTax>>,
     /// Two-letter US state code (\[ISO 3166-2\](https://en.wikipedia.org/wiki/ISO_3166-2)).
@@ -23248,7 +23212,8 @@ pub struct TaxProductRegistrationsResourceCountryOptionsUsLocalLeaseTax {
 pub struct TaxProductRegistrationsResourceCountryOptionsUsStateSalesTax {
     /// Elections for the state sales tax registration.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub elections: Option<Vec<TaxProductRegistrationsResourceCountryOptionsUsStateSalesTaxElection>>,
+    pub elections:
+        Option<Vec<TaxProductRegistrationsResourceCountryOptionsUsStateSalesTaxElection>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -23380,7 +23345,8 @@ pub struct TaxProductResourceShipFromDetails {
 #[non_exhaustive]
 pub struct TaxProductResourceTaxAssociationTransactionAttempts {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub committed: Option<Box<TaxProductResourceTaxAssociationTransactionAttemptsResourceCommitted>>,
+    pub committed:
+        Option<Box<TaxProductResourceTaxAssociationTransactionAttemptsResourceCommitted>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub errored: Option<Box<TaxProductResourceTaxAssociationTransactionAttemptsResourceErrored>>,
     /// The source of the tax transaction attempt. This is either a refund or a payment intent.
@@ -23504,8 +23470,7 @@ pub struct TaxProductResourceTaxSettingsStatusDetails {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct TaxProductResourceTaxSettingsStatusDetailsResourceActive {
-}
+pub struct TaxProductResourceTaxSettingsStatusDetailsResourceActive {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -23628,9 +23593,11 @@ pub struct TaxRateFlatAmount {
 #[non_exhaustive]
 pub struct TerminalConfiguration {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub bbpos_wisepad3: Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
+    pub bbpos_wisepad3:
+        Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub bbpos_wisepos_e: Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
+    pub bbpos_wisepos_e:
+        Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub cellular: Option<Box<TerminalConfigurationConfigurationResourceCellularConfig>>,
     /// Unique identifier for the object.
@@ -23653,21 +23620,28 @@ pub struct TerminalConfiguration {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub reboot_window: Option<Box<TerminalConfigurationConfigurationResourceRebootWindow>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub stripe_s700: Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
+    pub stripe_s700:
+        Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub stripe_s710: Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
+    pub stripe_s710:
+        Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub tipping: Option<Box<TerminalConfigurationConfigurationResourceTipping>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub verifone_m425: Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
+    pub verifone_m425:
+        Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub verifone_p400: Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
+    pub verifone_p400:
+        Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub verifone_p630: Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
+    pub verifone_p630:
+        Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub verifone_ux700: Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
+    pub verifone_ux700:
+        Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub verifone_v660p: Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
+    pub verifone_v660p:
+        Option<Box<TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub wifi: Option<Box<TerminalConfigurationConfigurationResourceWifiConfig>>,
 }
@@ -23793,8 +23767,7 @@ pub struct TerminalReader {
 /// A Refund object returned by the Terminal refunds API.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
-pub struct TerminalRefund {
-}
+pub struct TerminalRefund {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -23944,9 +23917,11 @@ pub struct TerminalConfigurationConfigurationResourceTipping {
 #[non_exhaustive]
 pub struct TerminalConfigurationConfigurationResourceWifiConfig {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub enterprise_eap_peap: Option<Box<TerminalConfigurationConfigurationResourceEnterprisePeapWifi>>,
+    pub enterprise_eap_peap:
+        Option<Box<TerminalConfigurationConfigurationResourceEnterprisePeapWifi>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub enterprise_eap_tls: Option<Box<TerminalConfigurationConfigurationResourceEnterpriseTlsWifi>>,
+    pub enterprise_eap_tls:
+        Option<Box<TerminalConfigurationConfigurationResourceEnterpriseTlsWifi>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub personal_psk: Option<Box<TerminalConfigurationConfigurationResourcePersonalPskWifi>>,
     /// Security type of the WiFi network. The hash with the corresponding name contains the credentials for this security type.
@@ -24922,7 +24897,8 @@ pub struct TreasuryFinancialAccountFeatures {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub deposit_insurance: Option<Box<TreasuryFinancialAccountsResourceToggleSettings>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub financial_addresses: Option<Box<TreasuryFinancialAccountsResourceFinancialAddressesFeatures>>,
+    pub financial_addresses:
+        Option<Box<TreasuryFinancialAccountsResourceFinancialAddressesFeatures>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub inbound_transfers: Option<Box<TreasuryFinancialAccountsResourceInboundTransfers>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -24968,7 +24944,8 @@ pub struct TreasuryInboundTransfer {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub linked_flows: Option<Box<TreasuryInboundTransfersResourceInboundTransferResourceLinkedFlows>>,
+    pub linked_flows:
+        Option<Box<TreasuryInboundTransfersResourceInboundTransferResourceLinkedFlows>>,
     /// If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub livemode: Option<bool>,
@@ -24994,7 +24971,8 @@ pub struct TreasuryInboundTransfer {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub status_transitions: Option<Box<TreasuryInboundTransfersResourceInboundTransferResourceStatusTransitions>>,
+    pub status_transitions:
+        Option<Box<TreasuryInboundTransfersResourceInboundTransferResourceStatusTransitions>>,
     /// The Transaction associated with this object.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub transaction: Option<serde_json::Value>,
@@ -25062,7 +25040,8 @@ pub struct TreasuryOutboundPayment {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub status_transitions: Option<Box<TreasuryOutboundPaymentsResourceOutboundPaymentResourceStatusTransitions>>,
+    pub status_transitions:
+        Option<Box<TreasuryOutboundPaymentsResourceOutboundPaymentResourceStatusTransitions>>,
     /// Details about network-specific tracking information if available.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub tracking_details: Option<serde_json::Value>,
@@ -25164,7 +25143,9 @@ pub struct TreasuryReceivedCredit {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub initiating_payment_method_details: Option<Box<TreasurySharedResourceInitiatingPaymentMethodDetailsInitiatingPaymentMethodDetails>>,
+    pub initiating_payment_method_details: Option<
+        Box<TreasurySharedResourceInitiatingPaymentMethodDetailsInitiatingPaymentMethodDetails>,
+    >,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub linked_flows: Option<Box<TreasuryReceivedCreditsResourceLinkedFlows>>,
     /// If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`.
@@ -25216,7 +25197,9 @@ pub struct TreasuryReceivedDebit {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub initiating_payment_method_details: Option<Box<TreasurySharedResourceInitiatingPaymentMethodDetailsInitiatingPaymentMethodDetails>>,
+    pub initiating_payment_method_details: Option<
+        Box<TreasurySharedResourceInitiatingPaymentMethodDetailsInitiatingPaymentMethodDetails>,
+    >,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub linked_flows: Option<Box<TreasuryReceivedDebitsResourceLinkedFlows>>,
     /// If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`.
@@ -25285,7 +25268,8 @@ pub struct TreasuryTransaction {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub status_transitions: Option<Box<TreasuryTransactionsResourceAbstractTransactionResourceStatusTransitions>>,
+    pub status_transitions:
+        Option<Box<TreasuryTransactionsResourceAbstractTransactionResourceStatusTransitions>>,
 }
 
 /// TransactionEntries represent individual units of money movements within a single \[Transaction\](https://api.stripe.com#transactions).
@@ -25596,7 +25580,8 @@ pub struct TreasuryOutboundPaymentsResourceOutboundPaymentResourceTrackingDetail
     #[serde(default, skip_serializing_if = "Option::is_none", rename = "type")]
     pub type_: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub us_domestic_wire: Option<Box<TreasuryOutboundPaymentsResourceUsDomesticWireTrackingDetails>>,
+    pub us_domestic_wire:
+        Option<Box<TreasuryOutboundPaymentsResourceUsDomesticWireTrackingDetails>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -25641,7 +25626,8 @@ pub struct TreasuryOutboundTransfersResourceOutboundTransferResourceTrackingDeta
     #[serde(default, skip_serializing_if = "Option::is_none", rename = "type")]
     pub type_: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub us_domestic_wire: Option<Box<TreasuryOutboundTransfersResourceUsDomesticWireTrackingDetails>>,
+    pub us_domestic_wire:
+        Option<Box<TreasuryOutboundTransfersResourceUsDomesticWireTrackingDetails>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -25824,7 +25810,8 @@ pub struct TreasurySharedResourceInitiatingPaymentMethodDetailsInitiatingPayment
     #[serde(default, skip_serializing_if = "Option::is_none", rename = "type")]
     pub type_: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub us_bank_account: Option<Box<TreasurySharedResourceInitiatingPaymentMethodDetailsUsBankAccount>>,
+    pub us_bank_account:
+        Option<Box<TreasurySharedResourceInitiatingPaymentMethodDetailsUsBankAccount>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

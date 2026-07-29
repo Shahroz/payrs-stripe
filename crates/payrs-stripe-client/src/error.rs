@@ -168,7 +168,11 @@ impl Error {
         source: serde_json::Error,
         request_id: Option<RequestId>,
     ) -> Self {
-        Self::Deserialization { path: path.into(), source, request_id }
+        Self::Deserialization {
+            path: path.into(),
+            source,
+            request_id,
+        }
     }
 
     /// The Stripe API error, if this is an [`Error::Api`].

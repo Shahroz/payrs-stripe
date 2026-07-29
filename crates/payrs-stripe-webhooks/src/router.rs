@@ -97,7 +97,9 @@ impl WebhookRouter {
     pub fn from_env_var(var_name: &str) -> Result<Self, String> {
         match std::env::var(var_name) {
             Ok(secret) if !secret.trim().is_empty() => Ok(Self::new(secret)),
-            _ => Err(format!("environment variable `{var_name}` is not set or empty")),
+            _ => Err(format!(
+                "environment variable `{var_name}` is not set or empty"
+            )),
         }
     }
 

@@ -39,11 +39,13 @@ pub struct Paginator<T> {
 }
 
 impl<T: serde::de::DeserializeOwned> Paginator<T> {
-    pub(crate) fn new(
-        path: String,
-        params: serde_json::Map<String, serde_json::Value>,
-    ) -> Self {
-        Self { path, params, exhausted: false, _item: PhantomData }
+    pub(crate) fn new(path: String, params: serde_json::Map<String, serde_json::Value>) -> Self {
+        Self {
+            path,
+            params,
+            exhausted: false,
+            _item: PhantomData,
+        }
     }
 
     /// Fetch the next page, or `None` once the listing is exhausted.
@@ -59,7 +61,10 @@ impl<T: serde::de::DeserializeOwned> Paginator<T> {
         spec.raw_query = crate::encode_params(&self.params)?;
         let raw: serde_json::Value = client.execute(spec).await?;
 
-        let has_more = raw.get("has_more").and_then(serde_json::Value::as_bool).unwrap_or(false);
+        let has_more = raw
+            .get("has_more")
+            .and_then(serde_json::Value::as_bool)
+            .unwrap_or(false);
         let last_id = raw
             .get("data")
             .and_then(serde_json::Value::as_array)

@@ -308,7 +308,9 @@ impl ClientBuilder {
         let key = std::env::var(var_name)
             .map_err(|_| Error::Config(format!("environment variable `{var_name}` is not set")))?;
         if key.trim().is_empty() {
-            return Err(Error::Config(format!("environment variable `{var_name}` is empty")));
+            return Err(Error::Config(format!(
+                "environment variable `{var_name}` is empty"
+            )));
         }
         let mut builder = Self::new(key);
         if let Ok(base) = std::env::var("STRIPE_API_BASE") {

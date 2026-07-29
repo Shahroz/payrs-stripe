@@ -22,7 +22,10 @@ struct MockTransport {
 impl MockTransport {
     fn new(mut responses: Vec<Response>) -> Arc<Self> {
         responses.reverse();
-        Arc::new(Self { responses: Mutex::new(responses), seen: Mutex::new(Vec::new()) })
+        Arc::new(Self {
+            responses: Mutex::new(responses),
+            seen: Mutex::new(Vec::new()),
+        })
     }
     fn requests(&self) -> Vec<Request> {
         self.seen.lock().unwrap().clone()
@@ -61,12 +64,16 @@ fn body_of(req: &Request) -> String {
 #[tokio::test]
 async fn checkout_full_flow_create_retrieve_line_items_expire() {
     let transport = MockTransport::new(vec![
-        ok(r#"{"id": "cs_1", "object": "checkout.session", "mode": "payment",
+        ok(
+            r#"{"id": "cs_1", "object": "checkout.session", "mode": "payment",
               "url": "https://checkout.stripe.com/c/pay/cs_1", "status": "open",
-              "amount_total": 3998, "currency": "usd"}"#),
+              "amount_total": 3998, "currency": "usd"}"#,
+        ),
         ok(r#"{"id": "cs_1", "object": "checkout.session", "status": "open"}"#),
-        ok(r#"{"object": "list", "has_more": false, "url": "/v1/checkout/sessions/cs_1/line_items",
-              "data": [{"id": "li_1", "object": "item", "quantity": 2, "amount_total": 3998}]}"#),
+        ok(
+            r#"{"object": "list", "has_more": false, "url": "/v1/checkout/sessions/cs_1/line_items",
+              "data": [{"id": "li_1", "object": "item", "quantity": 2, "amount_total": 3998}]}"#,
+        ),
         ok(r#"{"id": "cs_1", "object": "checkout.session", "status": "expired"}"#),
     ]);
     let c = client(Arc::clone(&transport));
@@ -94,7 +101,11 @@ async fn checkout_full_flow_create_retrieve_line_items_expire() {
         .await
         .unwrap();
     assert_eq!(session.id.as_deref(), Some("cs_1"));
-    assert!(session.url.as_deref().unwrap().starts_with("https://checkout.stripe.com/"));
+    assert!(session
+        .url
+        .as_deref()
+        .unwrap()
+        .starts_with("https://checkout.stripe.com/"));
 
     // 2. Retrieve it.
     let _fetched: payrs_stripe::models::CheckoutSession =
@@ -134,11 +145,20 @@ async fn checkout_full_flow_create_retrieve_line_items_expire() {
         create_body.contains("line_items[0][price_data][product_data][name]=Widget"),
         "{create_body}"
     );
-    assert!(create_body.contains("metadata[order_id]=ord_42"), "{create_body}");
+    assert!(
+        create_body.contains("metadata[order_id]=ord_42"),
+        "{create_body}"
+    );
     // {CHECKOUT_SESSION_ID} placeholder must survive percent-encoding round-trip
-    assert!(create_body.contains("%7BCHECKOUT_SESSION_ID%7D"), "{create_body}");
+    assert!(
+        create_body.contains("%7BCHECKOUT_SESSION_ID%7D"),
+        "{create_body}"
+    );
 
-    assert_eq!(reqs[1].url, "https://api.stripe.com/v1/checkout/sessions/cs_1");
+    assert_eq!(
+        reqs[1].url,
+        "https://api.stripe.com/v1/checkout/sessions/cs_1"
+    );
     assert_eq!(
         reqs[2].url,
         "https://api.stripe.com/v1/checkout/sessions/cs_1/line_items"
@@ -150,7 +170,9 @@ async fn checkout_full_flow_create_retrieve_line_items_expire() {
     // Every mutating call in the flow carried an idempotency key.
     for req in [&reqs[0], &reqs[3]] {
         assert!(
-            req.headers.iter().any(|(k, _)| k.eq_ignore_ascii_case("idempotency-key")),
+            req.headers
+                .iter()
+                .any(|(k, _)| k.eq_ignore_ascii_case("idempotency-key")),
             "missing idempotency key on {}",
             req.url
         );
@@ -168,8 +190,10 @@ async fn invoice_lifecycle_item_create_finalize_pay_send_void() {
         ok(r#"{"id": "in_1", "object": "invoice", "status": "paid", "amount_paid": 5000}"#),
         ok(r#"{"id": "in_1", "object": "invoice", "status": "paid"}"#),
         ok(r#"{"id": "in_2", "object": "invoice", "status": "void"}"#),
-        ok(r#"{"object": "list", "has_more": false, "url": "/v1/invoices",
-              "data": [{"id": "in_1", "status": "paid"}]}"#),
+        ok(
+            r#"{"object": "list", "has_more": false, "url": "/v1/invoices",
+              "data": [{"id": "in_1", "status": "paid"}]}"#,
+        ),
     ]);
     let c = client(Arc::clone(&transport));
 
@@ -211,10 +235,14 @@ async fn invoice_lifecycle_item_create_finalize_pay_send_void() {
     assert_eq!(paid.amount_paid, Some(5000));
 
     // 5. Send the invoice email; 6. void another; 7. list.
-    let _sent: payrs_stripe::models::Invoice =
-        v1::invoices::PostInvoicesInvoiceSend::new("in_1").send(&c).await.unwrap();
-    let voided: payrs_stripe::models::Invoice =
-        v1::invoices::PostInvoicesInvoiceVoid::new("in_2").send(&c).await.unwrap();
+    let _sent: payrs_stripe::models::Invoice = v1::invoices::PostInvoicesInvoiceSend::new("in_1")
+        .send(&c)
+        .await
+        .unwrap();
+    let voided: payrs_stripe::models::Invoice = v1::invoices::PostInvoicesInvoiceVoid::new("in_2")
+        .send(&c)
+        .await
+        .unwrap();
     assert_eq!(voided.status.as_deref(), Some("void"));
     let list: payrs_stripe::List<payrs_stripe::models::Invoice> = v1::invoices::GetInvoices::new()
         .customer("cus_9")
@@ -243,7 +271,10 @@ async fn invoice_lifecycle_item_create_finalize_pay_send_void() {
     assert!(item_body.contains("customer=cus_9"), "{item_body}");
     assert!(item_body.contains("amount=5000"), "{item_body}");
     let invoice_body = body_of(&reqs[1]);
-    assert!(invoice_body.contains("auto_advance=false"), "{invoice_body}");
+    assert!(
+        invoice_body.contains("auto_advance=false"),
+        "{invoice_body}"
+    );
 }
 
 // ------------------------------------------------- transactions & payments
@@ -251,17 +282,25 @@ async fn invoice_lifecycle_item_create_finalize_pay_send_void() {
 #[tokio::test]
 async fn transactions_balance_customer_charge_refund_capture() {
     let transport = MockTransport::new(vec![
-        ok(r#"{"object": "list", "has_more": true, "url": "/v1/balance_transactions",
+        ok(
+            r#"{"object": "list", "has_more": true, "url": "/v1/balance_transactions",
               "data": [{"id": "txn_1", "object": "balance_transaction", "amount": 1999,
-                        "net": 1911, "fee": 88, "type": "charge", "currency": "usd"}]}"#),
+                        "net": 1911, "fee": 88, "type": "charge", "currency": "usd"}]}"#,
+        ),
         ok(r#"{"id": "txn_1", "object": "balance_transaction", "amount": 1999, "fee": 88}"#),
         ok(r#"{"id": "cbtxn_1", "object": "customer_balance_transaction", "amount": -500}"#),
-        ok(r#"{"id": "pi_1", "object": "payment_intent", "status": "requires_capture",
-              "amount": 1999, "amount_capturable": 1999}"#),
-        ok(r#"{"id": "pi_1", "object": "payment_intent", "status": "succeeded",
-              "amount_received": 1500}"#),
-        ok(r#"{"id": "re_1", "object": "refund", "amount": 500, "status": "succeeded",
-              "charge": "ch_1"}"#),
+        ok(
+            r#"{"id": "pi_1", "object": "payment_intent", "status": "requires_capture",
+              "amount": 1999, "amount_capturable": 1999}"#,
+        ),
+        ok(
+            r#"{"id": "pi_1", "object": "payment_intent", "status": "succeeded",
+              "amount_received": 1500}"#,
+        ),
+        ok(
+            r#"{"id": "re_1", "object": "refund", "amount": 500, "status": "succeeded",
+              "charge": "ch_1"}"#,
+        ),
     ]);
     let c = client(Arc::clone(&transport));
 
@@ -322,8 +361,7 @@ async fn transactions_balance_customer_charge_refund_capture() {
 
     let reqs = transport.requests();
     assert_eq!(
-        reqs[0].url,
-        "https://api.stripe.com/v1/balance_transactions?limit=1&type=charge",
+        reqs[0].url, "https://api.stripe.com/v1/balance_transactions?limit=1&type=charge",
         "reserved-word param `type` must hit the wire unrenamed"
     );
     assert_eq!(
@@ -333,8 +371,14 @@ async fn transactions_balance_customer_charge_refund_capture() {
     let credit_body = body_of(&reqs[2]);
     assert!(credit_body.contains("amount=-500"), "{credit_body}");
     let capture_body = body_of(&reqs[4]);
-    assert!(capture_body.contains("amount_to_capture=1500"), "{capture_body}");
+    assert!(
+        capture_body.contains("amount_to_capture=1500"),
+        "{capture_body}"
+    );
     let refund_body = body_of(&reqs[5]);
     assert!(refund_body.contains("charge=ch_1"), "{refund_body}");
-    assert!(refund_body.contains("reason=requested_by_customer"), "{refund_body}");
+    assert!(
+        refund_body.contains("reason=requested_by_customer"),
+        "{refund_body}"
+    );
 }
