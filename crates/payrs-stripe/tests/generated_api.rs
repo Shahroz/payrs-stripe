@@ -1,7 +1,13 @@
 //! End-to-end behavioral tests for the generated API surface and v2 support,
 //! using an injected mock transport (no network).
 
-#![allow(missing_docs, clippy::unwrap_used, clippy::expect_used, clippy::panic)]
+#![allow(
+    missing_docs,
+    clippy::unwrap_used,
+    clippy::expect_used,
+    clippy::panic,
+    clippy::too_many_lines
+)]
 
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};

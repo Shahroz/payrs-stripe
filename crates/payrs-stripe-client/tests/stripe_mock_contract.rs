@@ -1,7 +1,13 @@
 //! Contract tests against Stripe's official `stripe-mock` server.
 //! Boot it first: `./scripts/stripe-mock.sh`, then `cargo test -- --ignored`.
 
-#![allow(missing_docs, clippy::unwrap_used, clippy::expect_used, clippy::panic)]
+#![allow(
+    missing_docs,
+    clippy::unwrap_used,
+    clippy::expect_used,
+    clippy::panic,
+    clippy::too_many_lines
+)]
 
 use payrs_stripe_client::{Client, Method};
 

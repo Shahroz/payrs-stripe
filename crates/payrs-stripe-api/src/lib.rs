@@ -12,8 +12,16 @@
 //!
 //! Regenerate after updating the vendored spec: `python3 codegen/generate.py`.
 
+// Generated modules are excluded from rustfmt: their layout is owned by
+// `codegen/generate.py`, and formatting ~26k lines of generated code on every
+// `cargo fmt` is slow and produces noisy diffs on every spec bump. Removing
+// these attributes means `cargo fmt --all --check` (the CI lint gate) will
+// demand a full reformat of the generated tree.
+#[rustfmt::skip]
 pub mod models;
+#[rustfmt::skip]
 pub mod v1;
+// v2 is hand-written, so it *is* formatted normally.
 pub mod v2;
 
 mod pagination;

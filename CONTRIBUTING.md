@@ -2,15 +2,20 @@
 
 ## Setup
 
-- Rust ≥ 1.89 (MSRV, driven by smol_str + icu deps), stable recommended
+- Rust ≥ 1.89 (MSRV, driven by smol_str + icu deps)
+- **Rust 1.91 for linting** — CI pins clippy/rustfmt/rustdoc to this version
+  (`LINT_TOOLCHAIN` in `.github/workflows/ci.yml`) so lint results are
+  reproducible. New clippy releases add lints; pinning means a toolchain bump
+  is a deliberate PR, not a surprise red build on an unrelated change.
+  Locally: `rustup toolchain install 1.91` then `cargo +1.91 clippy …`.
 - Docker (for stripe-mock contract tests)
 
 ```bash
 cargo test --workspace            # unit + behavioral tests (no network)
 ./scripts/stripe-mock.sh          # in another terminal
 cargo test -- --ignored           # contract tests against stripe-mock
-cargo clippy --workspace --all-targets --all-features
-cargo fmt --all
+cargo +1.91 clippy --workspace --all-targets --all-features -- -D warnings
+cargo +1.91 fmt --all
 ```
 
 ## Ground rules

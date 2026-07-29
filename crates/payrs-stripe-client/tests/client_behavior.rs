@@ -3,7 +3,13 @@
 //! across retries, retry classification, error-envelope parsing, and header
 //! construction.
 
-#![allow(missing_docs, clippy::unwrap_used, clippy::expect_used, clippy::panic)]
+#![allow(
+    missing_docs,
+    clippy::unwrap_used,
+    clippy::expect_used,
+    clippy::panic,
+    clippy::too_many_lines
+)]
 
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};

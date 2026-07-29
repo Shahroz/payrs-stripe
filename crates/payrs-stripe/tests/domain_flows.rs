@@ -5,7 +5,13 @@
 //! These pin the wire contract per domain: paths, methods, form encoding,
 //! and typed model/list responses.
 
-#![allow(missing_docs, clippy::unwrap_used, clippy::expect_used, clippy::panic)]
+#![allow(
+    missing_docs,
+    clippy::unwrap_used,
+    clippy::expect_used,
+    clippy::panic,
+    clippy::too_many_lines
+)]
 
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};

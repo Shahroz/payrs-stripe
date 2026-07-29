@@ -452,6 +452,14 @@ def main() -> None:
     (ROOT / "docs" / "coverage.md").write_text("\n".join(report))
     print(f"generated {len(SCHEMAS)} models, {op_count} operations, {len(sections)} sections + docs/coverage.md")
 
+    # Keep generated output rustfmt-clean (best effort; CI enforces).
+    import subprocess
+    try:
+        subprocess.run(["cargo", "fmt", "--package", "payrs-stripe-api"], cwd=ROOT, check=False)
+        print("formatted generated code with cargo fmt")
+    except OSError:
+        print("note: cargo fmt unavailable; run `cargo fmt --all` before committing")
+
 
 if __name__ == "__main__":
     sys.exit(main())

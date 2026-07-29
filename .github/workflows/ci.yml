@@ -4,9 +4,17 @@ on:
   push: { branches: [main] }
   pull_request:
 
+# NOTE: `-D warnings` is deliberately NOT set workflow-wide. Lint enforcement
+# lives in the `lint` job on a pinned toolchain (see below). Applying it to the
+# `beta` test job would turn any newly-introduced rustc lint into a red build
+# for reasons unrelated to this repo's code.
 env:
   CARGO_TERM_COLOR: always
-  RUSTFLAGS: -D warnings
+  # Toolchain used for all lint enforcement (clippy + rustfmt + rustdoc).
+  # Pinned so lint results are reproducible locally and in CI; bump this
+  # deliberately in its own PR rather than inheriting whatever `stable` is on
+  # any given day. Keep in sync with .github/workflows/publish.yml.
+  LINT_TOOLCHAIN: "1.91"
 
 jobs:
   test:
@@ -30,14 +38,17 @@ jobs:
       - run: cargo test --workspace --all-features
 
   lint:
+    name: lint (pinned toolchain)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-        with: { components: "clippy, rustfmt" }
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: "${{ env.LINT_TOOLCHAIN }}"
+          components: "clippy, rustfmt"
       - uses: Swatinem/rust-cache@v2
       - run: cargo fmt --all --check
-      - run: cargo clippy --workspace --all-targets --all-features
+      - run: cargo clippy --workspace --all-targets --all-features -- -D warnings
       - run: cargo doc --workspace --no-deps --all-features
         env: { RUSTDOCFLAGS: -D warnings }
 

@@ -10,20 +10,42 @@ permissions:
   id-token: write   # required for OIDC token exchange
   contents: read
 
+env:
+  CARGO_TERM_COLOR: always
+  # Keep in sync with .github/workflows/ci.yml
+  LINT_TOOLCHAIN: "1.91"
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     environment: crates-io
     steps:
       - uses: actions/checkout@v4
+
+      # Tests run on stable: they must pass on what users actually build with.
       - uses: dtolnay/rust-toolchain@stable
-      - name: Pre-publish gates
+      - uses: Swatinem/rust-cache@v2
+      - name: Test gate
+        run: cargo test --workspace --all-features
+
+      # Lint runs on the pinned toolchain, matching CI exactly.
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: "${{ env.LINT_TOOLCHAIN }}"
+          components: "clippy, rustfmt"
+      - name: Lint gate
         run: |
-          cargo test --workspace
-          cargo clippy --workspace --all-targets -- -D warnings
+          cargo fmt --all --check
+          cargo clippy --workspace --all-targets --all-features -- -D warnings
+
       - uses: rust-lang/crates-io-auth-action@v1
         id: auth
-      - name: Publish workspace (dependency order handled by cargo)
-        run: cargo publish --workspace --no-verify
+
+      # `cargo publish --workspace` resolves publish order and verifies each
+      # crate against a temporary local registry overlay, so unpublished
+      # sibling crates resolve correctly. Verification is intentionally left
+      # ON (no --no-verify): it is the only build check crates.io itself does.
+      - name: Publish workspace
+        run: cargo publish --workspace
         env:
           CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
