@@ -231,3 +231,56 @@ async fn raw_escape_hatch_overrides_version_and_context() {
         "v2 POSTs get idempotency keys too"
     );
 }
+
+#[tokio::test]
+async fn preview_feature_version_tags_pass_through_verbatim() {
+    const PREVIEW_VERSION: &str = "2026-06-24.dahlia; feature_beta=v3";
+
+    // Stripe has no /v3 REST namespace — the API is v1 + v2. The only place a
+    // "v3" legitimately appears is a *preview feature tag* inside the
+    // Stripe-Version header, e.g. "2026-06-24.dahlia; feature_beta=v3".
+    // Such strings must reach the wire byte-for-byte: the semicolon, the
+    // space, and the tag are all significant to Stripe's version parser.
+    let transport = MockTransport::new(vec![json_response("{}")]);
+    let c = client(Arc::clone(&transport));
+
+    let _: serde_json::Value = c
+        .request(Method::Get, "/v1/customers")
+        .stripe_version(PREVIEW_VERSION)
+        .send_json()
+        .await
+        .unwrap();
+
+    let sent = transport.requests()[0]
+        .headers
+        .iter()
+        .find(|(k, _)| k.eq_ignore_ascii_case("stripe-version"))
+        .map(|(_, v)| v.clone())
+        .expect("Stripe-Version header must be present");
+    assert_eq!(sent, PREVIEW_VERSION, "preview tag must not be mangled");
+}
+
+/// Model grouping must not break existing imports: every type stays reachable
+/// at the flat `models::X` path it had before the split into domain modules,
+/// and is additionally reachable at its grouped path.
+#[test]
+fn model_paths_are_available_flat_and_grouped() {
+    // Flat paths (the pre-grouping, published API surface).
+    let _: Option<payrs_stripe::models::Customer> = None;
+    let _: Option<payrs_stripe::models::PaymentIntent> = None;
+    let _: Option<payrs_stripe::models::CheckoutSession> = None;
+    let _: Option<payrs_stripe::models::Invoice> = None;
+    let _: Option<payrs_stripe::models::BalanceTransaction> = None;
+
+    // Grouped paths (new, additive).
+    let _: Option<payrs_stripe::models::customers::Customer> = None;
+    let _: Option<payrs_stripe::models::payment_intents::PaymentIntent> = None;
+    let _: Option<payrs_stripe::models::checkout::CheckoutSession> = None;
+    let _: Option<payrs_stripe::models::invoices::Invoice> = None;
+    let _: Option<payrs_stripe::models::treasury::TreasuryFinancialAccount> = None;
+    let _: Option<payrs_stripe::models::issuing::IssuingCard> = None;
+
+    // Shared/nested types land in `common`.
+    let _: Option<payrs_stripe::models::common::Address> = None;
+    let _: Option<payrs_stripe::models::Address> = None;
+}

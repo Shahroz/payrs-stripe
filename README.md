@@ -1,7 +1,8 @@
 # payrs-stripe
 
-> ⚠️ **Pre-alpha (0.0.x).** Functional and tested, API surface may still shift
-> before 0.1. Not affiliated with or endorsed by Stripe, Inc.
+> **0.1.0 — first public release.** Fully tested and usable; the API surface
+> may still evolve before 1.0, and breaking changes will land in 0.x minor
+> bumps per Cargo's SemVer rules. Not affiliated with or endorsed by Stripe, Inc.
 
 An ergonomic, unofficial Rust SDK for the [Stripe](https://stripe.com) API —
 **full v1 surface + v2 namespace, every model exported, professional webhooks.**
@@ -11,6 +12,8 @@ An ergonomic, unofficial Rust SDK for the [Stripe](https://stripe.com) API —
 - 🧩 **Full API coverage** — 1,431 models and 587 typed operations across 76
   API sections, generated from Stripe's official OpenAPI spec
   (`codegen/generate.py`); every model exported via `payrs_stripe::models::*`.
+  Models are grouped by domain (`models::checkout`, `models::treasury`, …)
+  and *also* re-exported flat, so both import styles work.
   The full endpoint→builder mapping is in [`docs/coverage.md`](docs/coverage.md) —
   checkout, invoices, subscriptions, transactions, charges, refunds, payouts,
   transfers, Connect, Terminal, Treasury, Issuing, Tax, Radar, and the rest
@@ -36,7 +39,7 @@ An ergonomic, unofficial Rust SDK for the [Stripe](https://stripe.com) API —
 
 ```toml
 [dependencies]
-payrs-stripe = "0.0.1"   # features: api + webhooks + rustls on by default
+payrs-stripe = "0.1.0"   # features: api + webhooks + rustls on by default
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 ```
 
@@ -169,8 +172,30 @@ let payout_methods: serde_json::Value = client
 # }
 ```
 
-(Heads-up: Stripe's server APIs are `/v1` and `/v2`. "v3" is Stripe.js — a
-browser library, not something a server SDK calls.)
+### Which API versions exist (and why there's no "v3")
+
+Stripe's server-side REST API has **exactly two namespaces**: `/v1` and `/v2`.
+Both are fully supported here. There is no `/v3` REST namespace.
+
+Two things are commonly mistaken for a "v3":
+
+1. **Stripe.js v3** — the browser library loaded from `js.stripe.com/v3`. It
+   runs client-side to collect card details; a server SDK never calls it.
+2. **Preview feature tags** — some preview features are requested via a tag
+   inside the `Stripe-Version` header, such as
+   `2026-06-24.dahlia; feature_beta=v3`. That `v3` names the *feature's*
+   revision, not an API namespace.
+
+Preview tags are supported: pass the whole string to `.stripe_version(…)` and
+it reaches the wire byte-for-byte (covered by a test).
+
+```rust,ignore
+let preview: serde_json::Value = client
+    .request(Method::Get, "/v1/customers")
+    .stripe_version("2026-06-24.dahlia; feature_beta=v3")
+    .send_json()
+    .await?;
+```
 
 ## Testing your integration
 

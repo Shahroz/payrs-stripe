@@ -17,7 +17,7 @@ default-members = [
 ]
 
 [workspace.package]
-version = "0.0.1"
+version = "0.1.0"
 edition = "2021"
 rust-version = "1.89"
 license = "MIT OR Apache-2.0"
@@ -29,10 +29,10 @@ authors = ["Shahroz"]
 
 [workspace.dependencies]
 # Internal crates (version-locked, released in lockstep)
-payrs-stripe-types = { version = "0.0.1", path = "crates/payrs-stripe-types" }
-payrs-stripe-client = { version = "0.0.1", path = "crates/payrs-stripe-client" }
-payrs-stripe-webhooks = { version = "0.0.1", path = "crates/payrs-stripe-webhooks" }
-payrs-stripe-api = { version = "0.0.1", path = "crates/payrs-stripe-api" }
+payrs-stripe-types = { version = "0.1.0", path = "crates/payrs-stripe-types" }
+payrs-stripe-client = { version = "0.1.0", path = "crates/payrs-stripe-client" }
+payrs-stripe-webhooks = { version = "0.1.0", path = "crates/payrs-stripe-webhooks" }
+payrs-stripe-api = { version = "0.1.0", path = "crates/payrs-stripe-api" }
 
 # External
 serde = { version = "1", features = ["derive"] }

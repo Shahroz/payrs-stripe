@@ -1,8 +1,12 @@
 //! Full-surface Stripe API bindings, generated from Stripe's official
 //! `OpenAPI` specification (`codegen/generate.py`).
 //!
-//! * [`models`] — every API object schema as an exported struct (1,400+),
-//!   forward-compatible by construction (all-`Option` fields, unknown JSON
+//! * [`models`] — every API object schema as an exported struct (1,431),
+//!   grouped into 77 modules by API domain (`models::customers`,
+//!   `models::checkout`, `models::treasury`, …) with shared/nested types in
+//!   `models::common`. Every type is **also** re-exported flat, so
+//!   `models::Customer` and `models::customers::Customer` both resolve.
+//!   Forward-compatible by construction (all-`Option` fields, unknown JSON
 //!   ignored).
 //! * [`v1`] — every v1 operation (587) as a typed builder, grouped by API
 //!   section: `v1::customers::PostCustomers::new().name("Ada").send(&client)`.
