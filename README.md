@@ -74,6 +74,28 @@ Typed models deserialize webhook payloads too:
 let pi: payrs_stripe::models::PaymentIntent = event.deserialize_object()?;
 ```
 
+## Documentation
+
+| Guide | Covers |
+|---|---|
+| [Getting started](docs/getting-started.md) | Install, configure, first call, taking a payment |
+| [Configuration](docs/configuration.md) | Env vars, multi-account, timeouts, Connect |
+| [Errors and retries](docs/errors-and-retries.md) | Declines, rate limits, idempotency keys |
+| [Pagination](docs/pagination.md) | Listing beyond one page |
+| [Webhooks](docs/webhooks.md) | Receiving and reacting to events safely |
+| [Testing](docs/testing.md) | Mock transport, stripe-mock, test mode |
+| [API coverage](docs/coverage.md) | Every endpoint and its builder (generated) |
+
+API reference: <https://docs.rs/payrs-stripe> · Changelog: [CHANGELOG.md](CHANGELOG.md)
+
+Runnable examples in [`crates/payrs-stripe/examples/`](crates/payrs-stripe/examples):
+
+```bash
+STRIPE_SECRET_KEY=sk_test_… cargo run -p payrs-stripe --example checkout_session
+STRIPE_SECRET_KEY=sk_test_… cargo run -p payrs-stripe --example list_all_customers
+cargo run -p payrs-stripe --example verify_webhook   # runs offline
+```
+
 ## Configuration — your choice of style
 
 ```rust,ignore

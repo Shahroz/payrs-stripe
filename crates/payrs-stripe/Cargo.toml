@@ -29,6 +29,9 @@ serde_json = { workspace = true }
 
 [dev-dependencies]
 payrs-stripe-client = { workspace = true }
+# Used only by the `verify_webhook` example, to sign a demo payload.
+hmac = "0.12"
+sha2 = "0.10"
 tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
 serde_json = { workspace = true }
 

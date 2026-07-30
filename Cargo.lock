@@ -632,11 +632,13 @@ dependencies = [
 name = "payrs-stripe"
 version = "0.1.0"
 dependencies = [
+ "hmac",
  "payrs-stripe-api",
  "payrs-stripe-client",
  "payrs-stripe-types",
  "payrs-stripe-webhooks",
  "serde_json",
+ "sha2",
  "tokio",
 ]
 
