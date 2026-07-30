@@ -8,6 +8,8 @@ While the version is `0.x`, a minor bump may contain breaking changes.
 
 ## [Unreleased]
 
+## [0.1.1] — 2026-07-30
+
 ### Added
 - Per-crate documentation, developer guides under `docs/`, and runnable
   examples under `crates/payrs-stripe/examples/`.
@@ -21,6 +23,11 @@ While the version is `0.x`, a minor bump may contain breaking changes.
 ### Changed
 - CI lints on a pinned toolchain, so a new clippy release cannot turn an
   unrelated change red. `-D warnings` is scoped to the lint job.
+
+### Compatibility
+- Fully backward compatible with `0.1.0`. Grouping models into modules added
+  new paths (`models::customers::Customer`) without removing the flat ones
+  (`models::Customer`); a test pins both.
 
 ## [0.1.0] — first public release
 
@@ -37,5 +44,6 @@ While the version is `0.x`, a minor bump may contain breaking changes.
 - Cursor pagination on all 127 list endpoints.
 - Configuration from code, from the environment, or a hybrid of both.
 
-[Unreleased]: https://github.com/Shahroz/payrs-stripe/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Shahroz/payrs-stripe/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/Shahroz/payrs-stripe/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Shahroz/payrs-stripe/releases/tag/v0.1.0

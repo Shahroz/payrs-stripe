@@ -630,7 +630,7 @@ dependencies = [
 
 [[package]]
 name = "payrs-stripe"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "hmac",
  "payrs-stripe-api",
@@ -644,7 +644,7 @@ dependencies = [
 
 [[package]]
 name = "payrs-stripe-api"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "payrs-stripe-client",
  "payrs-stripe-types",
@@ -655,7 +655,7 @@ dependencies = [
 
 [[package]]
 name = "payrs-stripe-client"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "fastrand",
  "payrs-stripe-types",
@@ -671,7 +671,7 @@ dependencies = [
 
 [[package]]
 name = "payrs-stripe-types"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "serde",
  "serde_json",
@@ -681,7 +681,7 @@ dependencies = [
 
 [[package]]
 name = "payrs-stripe-webhooks"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "futures-util",
  "hmac",

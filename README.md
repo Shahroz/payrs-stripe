@@ -1,6 +1,6 @@
 # payrs-stripe
 
-> **0.1.0 — first public release.** Fully tested and usable; the API surface
+> **0.1.1.** Fully tested and usable; the API surface
 > may still evolve before 1.0, and breaking changes will land in 0.x minor
 > bumps per Cargo's SemVer rules. Not affiliated with or endorsed by Stripe, Inc.
 
@@ -39,7 +39,7 @@ An ergonomic, unofficial Rust SDK for the [Stripe](https://stripe.com) API —
 
 ```toml
 [dependencies]
-payrs-stripe = "0.1.0"   # features: api + webhooks + rustls on by default
+payrs-stripe = "0.1"   # features: api + webhooks + rustls on by default
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 ```
 
